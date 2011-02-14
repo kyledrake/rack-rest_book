@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name = "rack-rest_book"
-  s.version = "1.0.0"
+  s.version = "1.0.1"
   s.authors = ['Kyle Drake']
   s.email = ["kyle@stepchangegroup.com"]
   s.homepage = "https://mjfreshyfresh@github.com/mjfreshyfresh/rack-rest_book.git"

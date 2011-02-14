@@ -1,6 +1,5 @@
 module Rack
   class RestBook
-    
     class RestBookError < StandardError; end
     
     HTTP_METHODS = %w(GET HEAD PUT POST DELETE OPTIONS)
@@ -12,19 +11,10 @@ module Rack
     def call(env)
       if env['REQUEST_METHOD'] == 'POST'
         req = Request.new env
-        meth = req.params[METHOD_OVERRIDE_PARAM_KEY] || 'GET'
-        meth = meth.to_s.upcase
-        
-        unless HTTP_METHODS.include?(meth) && !meth.nil? && !meth.empty?
-          raise RestBookError, "invalid HTTP verb used in method override: #{req.params[METHOD_OVERRIDE_PARAM_KEY]}"
-        end
-        
-        if HTTP_METHODS.include?(meth) && meth != env['REQUEST_METHOD']
-          env['rack.methodoverride.original_method'] = env['REQUEST_METHOD']
-          env['REQUEST_METHOD'] = meth
-        end
+        meth = (req.params[METHOD_OVERRIDE_PARAM_KEY] || 'GET').to_s.upcase
+        raise RestBookError, "invalid HTTP verb for method override: #{req.params[METHOD_OVERRIDE_PARAM_KEY]}" unless HTTP_METHODS.include?(meth)
+        env['rack.methodoverride.original_method'] = env['REQUEST_METHOD'] and env['REQUEST_METHOD'] = meth unless meth == env['REQUEST_METHOD']
       end
-
       @app.call env
     end
   end
