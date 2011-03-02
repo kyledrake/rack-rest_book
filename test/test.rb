@@ -1,5 +1,4 @@
-Bundler.setup
-require 'bundler'
+require 'rubygems'
 require 'test/unit'
 require 'rack/test'
 require 'contest'
