@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name = "rack-rest_book"
-  s.version = "1.0.3"
+  s.version = "1.0.4"
   s.authors = ['Kyle Drake']
   s.email = ["kyle.drake@dachisgroup.com"]
   s.homepage = "http://github.com/dachisgroup/rack-rest_book"
@@ -10,6 +10,6 @@ Gem::Specification.new do |s|
   s.require_path = "lib"
   s.rubyforge_project = s.name
   s.add_dependency 'rack', '>= 1.0.0'
-  s.add_development_dependency 'sinatra', '=1.1.2'
-  s.add_development_dependency 'contest', '=0.1.2'
+  s.add_development_dependency 'sinatra'
+  s.add_development_dependency 'contest'
 end
